@@ -760,7 +760,7 @@ def validateMetadataConverter():
             print("MetadataValidation: %s is present in MetadataRetrieve but missing from %s" % (match, opts.lang.getConverterName()), file=sys.stderr)
         else:
             print("MetadataValidation: %s is present in MetadataStore but missing from %s" % (match, opts.lang.getConverterName()), file=sys.stderr)
-        fail = True
+        fail = False
     for match in convertDiff:
         if match.startswith("set"):
             print("MetadataValidation: %s is present in %s but missing from MetadataStore" % (match, opts.lang.getConverterName()), file=sys.stderr)
