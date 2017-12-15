@@ -4955,7 +4955,7 @@ PlaneInfo (as Plane)
   <xsd:element name="ViewSetups">
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element ref="SpimAttribute" minOccurs="0" maxOccurs="unbounded" />
+        <xsd:element ref="Attributes" />
         <xsd:element ref="Setup" minOccurs="0" maxOccurs="unbounded" />
       </xsd:sequence>
     </xsd:complexType>
@@ -4972,7 +4972,7 @@ PlaneInfo (as Plane)
         <xsd:attribute name="ID" use="required" type="SpimID"/>
         <xsd:element ref="size"/>
         <xsd:element ref="VoxelSize"/>
-        <xsd:element ref="Attributes"/>
+        <xsd:element ref="SetupAttributes"/>
       </xsd:sequence>
     </xsd:complexType>
   </xsd:element>
@@ -4988,32 +4988,21 @@ PlaneInfo (as Plane)
   <xsd:element name="Attributes">
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element ref="SimpleIllumination"/>
-        <xsd:element ref="SimpleSpimChannel"/>
-        <xsd:element ref="SimpleTile"/>
-        <xsd:element ref="SimpleAngle"/>
+        <xsd:element ref="Illumination"/>
+        <xsd:element ref="SpimChannel"/>
+        <xsd:element ref="Tile"/>
+        <xsd:element ref="SpimAngle"/>
       </xsd:sequence>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="SimpleIllumination" type="xsd:integer"/>
-  <xsd:element name="SimpleSpimChannel" type="xsd:integer"/>
-  <xsd:element name="SimpleTile" type="xsd:integer"/>
-  <xsd:element name="SimpleAngle" type="xsd:integer"/>
-  <xsd:element name="SpimAttribute">
-    <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns=""><plural>SpimAttributes</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-         Test SpimAttributes docs
-      </xsd:documentation>
-    </xsd:annotation>
+  <xsd:element name="SetupAttributes">
     <xsd:complexType>
-      <xsd:choice>
-        <xsd:element ref="SpimAngle"/>
+      <xsd:sequence>
         <xsd:element ref="Illumination"/>
+        <xsd:element ref="SpimChannel"/>
         <xsd:element ref="Tile"/>
-        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="SpimChannel"/>
-      </xsd:choice>
-      <xsd:attribute name="Name" use="required" type="xsd:string"/>
+        <xsd:element ref="SpimAngle"/>
+      </xsd:sequence>
     </xsd:complexType>
   </xsd:element>
   <xsd:element name="SpimAngle">
