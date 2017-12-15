@@ -74,7 +74,6 @@
             <xsd:element ref="Image" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element ref="StructuredAnnotations" minOccurs="0" maxOccurs="1"/>
             <xsd:element ref="ROI" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element ref="SpimData" minOccurs="0" maxOccurs="unbounded"/>
           </xsd:sequence>
           <!-- Or: Single BinaryOnly element -->
           <xsd:element name="BinaryOnly" minOccurs="1" maxOccurs="1">
@@ -266,6 +265,7 @@
             </xsd:documentation>
           </xsd:annotation>
         </xsd:element>
+        <xsd:element ref="Data" minOccurs="0" maxOccurs="1"/>
         <xsd:element ref="ExperimenterRef" minOccurs="0" maxOccurs="1"/>
         <xsd:element name="Description" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
@@ -4899,7 +4899,7 @@ PlaneInfo (as Plane)
   
   <!-- Spim Data -->
     
-  <xsd:element name="SpimData">
+  <xsd:element name="Data">
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>SpimDatas</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>
