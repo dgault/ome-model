@@ -1,0 +1,228 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!--
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+# Copyright (C) 2002 - 2016 Open Microscopy Environment
+#       Massachusetts Institute of Technology,
+#       National Institutes of Health,
+#       University of Dundee,
+#       University of Wisconsin at Madison
+#
+# This work is licensed under the
+#       Creative Commons Attribution 3.0 Unported License.
+# To view a copy of this license, visit
+#       http://creativecommons.org/licenses/by/3.0/
+# or send a letter to
+#       Creative Commons, 444 Castro Street, Suite 900,
+#       Mountain View, California, 94041, USA.
+# For attribution instructions, visit
+#       http://www.openmicroscopy.org/info/attribution
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<xsd:schema xmlns="http://www.openmicroscopy.org/Schemas/OME/2017-12"
+            targetNamespace="http://www.openmicroscopy.org/Schemas/BDV/2017-12"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:OME="http://www.openmicroscopy.org/Schemas/OME/2017-12"
+            xmlns:xml="http://www.w3.org/XML/1998/namespace"
+            version="1"
+            elementFormDefault="qualified">
+
+  <xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+  <xsd:import namespace="http://www.openmicroscopy.org/Schemas/OME/2017-12" schemaLocation="http://www.openmicroscopy.org/Schemas/OME/2017-12/ome.xsd"/>
+  
+  <!-- Spim Data -->
+    
+  <xsd:element name="BDV">
+    <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns=""><plural>SpimDatas</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>
+         Test OMESpimData docs
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="BasePath"/>
+        <xsd:element ref="SequenceDescription"/>
+        <xsd:element maxOccurs="unbounded" ref="ViewRegistration"/>
+      </xsd:sequence>
+      <xsd:attribute name="version" use="required" type="xsd:float"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="BasePath">
+    <xsd:complexType>
+      <xsd:simpleContent>
+        <xsd:extension base="xsd:string">
+          <xsd:attribute name="type" use="required" type="xsd:string"/>
+        </xsd:extension>
+      </xsd:simpleContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SequenceDescription">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="ImageLoader"/>
+        <xsd:element ref="ViewSetups"/>
+        <xsd:element ref="Timepoints"/>
+      </xsd:sequence>
+      <xsd:attribute name="ID" use="required" type="SequenceDescriptionID"/>
+      <xsd:attribute name="Name" use="optional" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="ImageLoader">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Hdf5"/>
+      </xsd:sequence>
+      <xsd:attribute name="format" use="required" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Hdf5">
+    <xsd:complexType>
+      <xsd:simpleContent>
+        <xsd:extension base="xsd:string">
+          <xsd:attribute name="type" use="required" type="xsd:string"/>
+        </xsd:extension>
+      </xsd:simpleContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="ViewSetups">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Attributes" />
+        <xsd:element ref="Setup" minOccurs="0" maxOccurs="unbounded" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Setup">
+      <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns=""><plural>Setups</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>
+         Test Setups docs
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:attribute name="ID" use="required" type="SpimID"/>
+        <xsd:element ref="size"/>
+        <xsd:element ref="VoxelSize"/>
+        <xsd:element ref="SetupAttributes"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="VoxelSize">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="unit"/>
+        <xsd:element ref="size"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="unit" type="xsd:string"/>
+  <xsd:element name="Attributes">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Illumination"/>
+        <xsd:element ref="SpimChannel"/>
+        <xsd:element ref="Tile"/>
+        <xsd:element ref="SpimAngle"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SetupAttributes">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Illumination"/>
+        <xsd:element ref="SpimChannel"/>
+        <xsd:element ref="Tile"/>
+        <xsd:element ref="SpimAngle"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SpimAngle">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:attribute name="ID" use="required" type="SpimID"/>
+        <xsd:attribute name="Name" use="optional" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Illumination">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:attribute name="ID" use="required" type="SpimID"/>
+        <xsd:attribute name="Name" use="optional" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Tile">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:attribute name="ID" use="required" type="SpimID"/>
+        <xsd:attribute name="Name" use="optional" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SpimChannel">
+    <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns=""><plural>SpimChannels</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>
+         Test SpimChannels docs
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:attribute name="ID" use="required" type="SpimID"/>
+        <xsd:attribute name="Name" use="optional" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Timepoints">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="first"/>
+        <xsd:element ref="last"/>
+      </xsd:sequence>
+      <xsd:attribute name="type" use="required" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="first" type="xsd:integer"/>
+  <xsd:element name="last" type="xsd:integer"/>
+  <xsd:element name="ViewRegistration">
+    <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns=""><plural>ViewRegistrations</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>
+         Test ViewRegistrations docs
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="ViewTransform"/>
+      </xsd:sequence>
+      <xsd:attribute name="setup" use="required" type="xsd:integer"/>
+      <xsd:attribute name="timepoint" use="required" type="xsd:integer"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="ViewTransform">
+    <xsd:complexType>
+      <xsd:sequence>
+      <xsd:attribute name="Name" use="optional" type="xsd:string"/>
+        <xsd:element ref="affine"/>
+      </xsd:sequence>
+      <xsd:attribute name="type" use="required" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="affine" type="xsd:string"/>
+  <xsd:element name="size" type="xsd:string"/>
+
+  <xsd:simpleType name="SpimID">
+    <xsd:restriction base="LSID">
+      <xsd:pattern value="(urn:lsid:([\w\-\.]+\.[\w\-\.]+)+:Instrument:\S+)|(Instrument:\S+)"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+    <xsd:simpleType name="SequenceDescriptionID">
+    <xsd:restriction base="LSID">
+      <xsd:pattern value="(urn:lsid:([\w\-\.]+\.[\w\-\.]+)+:Instrument:\S+)|(Instrument:\S+)"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+</xsd:schema>

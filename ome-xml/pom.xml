@@ -103,6 +103,7 @@
                 <argument>--output-directory=${xsdfu.modelpath}/</argument>
                 <argument>--print-generated</argument>
                 <argument>${project.rootdir}/${ome.model.omeschema}</argument>
+                <argument>${project.rootdir}/${ome.model.bdvschema}</argument>
               </arguments>
             </configuration>
           </execution>
@@ -122,6 +123,7 @@
                 <argument>--output-directory=${xsdfu.metadatapath}/</argument>
                 <argument>--print-generated</argument>
                 <argument>${project.rootdir}/${ome.model.omeschema}</argument>
+                <argument>${project.rootdir}/${ome.model.bdvschema}</argument>
               </arguments>
             </configuration>
           </execution>

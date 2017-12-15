@@ -662,7 +662,8 @@ def docGenMain(model, opts):
     """
 
     for theSchemas in [
-    ["OME",           "../specification/InProgress/ome.xsd"]
+    ["OME",           "../specification/InProgress/ome.xsd"],
+    ["BDV",           "../specification/InProgress/bdv.xsd"]
     ]:
         prefix = theSchemas[0] + ":"
         opts.args = [theSchemas[1]]
@@ -685,8 +686,8 @@ def tabGenMain(model, opts):
     """
 
     for theSchemas in [
-            ["OME",       "../specification/InProgress/ome.xsd",
-                [["OME", "OME:"]]]
+            ["OME",       "../specification/InProgress/ome.xsd", [["OME", "OME:"]]],
+            ["BDV",       "../specification/InProgress/bdv.xsd", [["BDV", "OME:BDV:"]]]
         ]:
         prefix = theSchemas[0] + ":"
         opts.args = [theSchemas[1]]

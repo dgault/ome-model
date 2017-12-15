@@ -22,5 +22,6 @@
   <nextCatalog catalog="2013-06/catalog.xml"/>
   <nextCatalog catalog="2015-01/catalog.xml"/>
   <nextCatalog catalog="2016-06/catalog.xml"/>
+  <nextCatalog catalog="2017-12/catalog.xml"/>
   <nextCatalog catalog="external/catalog.xml"/>
 </catalog>

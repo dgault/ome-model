@@ -19,20 +19,24 @@
 #       http://www.openmicroscopy.org/info/attribution
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -->
-<xsd:schema xmlns="http://www.openmicroscopy.org/Schemas/OME/2016-06"
-            targetNamespace="http://www.openmicroscopy.org/Schemas/OME/2016-06"
+<xsd:schema xmlns="http://www.openmicroscopy.org/Schemas/OME/2017-12"
+            targetNamespace="http://www.openmicroscopy.org/Schemas/OME/2017-12"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns:OME="http://www.openmicroscopy.org/Schemas/OME/2016-06"
+            xmlns:OME="http://www.openmicroscopy.org/Schemas/OME/2017-12"
+            xmlns:BDV="http://www.openmicroscopy.org/Schemas/BDV/2017-12"
             xmlns:xml="http://www.w3.org/XML/1998/namespace"
             version="2"
             elementFormDefault="qualified">
 
   <xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+  	<xsd:import namespace="http://www.openmicroscopy.org/Schemas/BDV/2017-12"
+		schemaLocation="http://www.openmicroscopy.org/Schemas/BDV/2017-12/bdv.xsd"/>
+
 
   <xsd:annotation>
     <xsd:documentation>
       Open Microscopy Environment
-      OME XML Schema June 2016
+      OME XML Schema December 2017
     </xsd:documentation>
   </xsd:annotation>
 
@@ -147,6 +151,7 @@
     <xsd:key name="PixelsIDKey"><xsd:selector xpath="OME:Image/OME:Pixels"/><xsd:field xpath="@ID"/></xsd:key>
     <xsd:key name="PlateIDKey"><xsd:selector xpath="OME:Plate"/><xsd:field xpath="@ID"/></xsd:key>
     <xsd:key name="ProjectIDKey"><xsd:selector xpath="OME:Project"/><xsd:field xpath="@ID"/></xsd:key>
+    <xsd:key name="SequenceDescriptionIDKey"><xsd:selector xpath="OME:SequenceDescription"/><xsd:field xpath="@ID"/></xsd:key>
     <xsd:key name="ReagentIDKey"><xsd:selector xpath="OME:Screen/OME:Reagent"/><xsd:field xpath="@ID"/></xsd:key>
     <xsd:key name="ScreenAcquisitionIDKey"><xsd:selector xpath="OME:Screen/OME:ScreenAcquisition"/><xsd:field xpath="@ID"/></xsd:key>
     <xsd:key name="ScreenIDKey"><xsd:selector xpath="OME:Screen"/><xsd:field xpath="@ID"/></xsd:key>
@@ -264,6 +269,7 @@
             </xsd:documentation>
           </xsd:annotation>
         </xsd:element>
+        <xsd:element ref="BDV:BDV" minOccurs="0" maxOccurs="1"/>
         <xsd:element ref="ExperimenterRef" minOccurs="0" maxOccurs="1"/>
         <xsd:element name="Description" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
@@ -4894,5 +4900,9 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
+  
+  <!-- Spim Data -->
+    
+
 
 </xsd:schema>
