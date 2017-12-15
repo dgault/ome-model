@@ -269,7 +269,7 @@
             </xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element ref="BDV:BDV" minOccurs="0" maxOccurs="1"/>
+        <xsd:element ref="BDV:Data" minOccurs="0" maxOccurs="1"/>
         <xsd:element ref="ExperimenterRef" minOccurs="0" maxOccurs="1"/>
         <xsd:element name="Description" minOccurs="0" maxOccurs="1">
           <xsd:annotation>

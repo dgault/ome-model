@@ -32,7 +32,7 @@
   
   <!-- Spim Data -->
     
-  <xsd:element name="BDV">
+  <xsd:element name="Data">
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>SpimDatas</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>
